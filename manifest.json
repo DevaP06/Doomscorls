@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Doomboard",
+  "version": "0.4.0",
+  "description": "Count your daily Reels and Shorts, get a brainrot score, and optionally climb the doomscroll leaderboard.",
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "permissions": ["storage", "alarms"],
+  "host_permissions": ["https://uroqjdpvjqnyokrkwqox.supabase.co/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": ["*://*.instagram.com/*", "*://*.youtube.com/*"],
+    "js": ["titles.js", "content.js"]
+  }],
+  "web_accessible_resources": [{
+    "resources": ["fonts/Fredoka-600.ttf"],
+    "matches": ["*://*.instagram.com/*", "*://*.youtube.com/*"]
+  }],
+  "action": { "default_popup": "popup.html", "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png" } }
+}

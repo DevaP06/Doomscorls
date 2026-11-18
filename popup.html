@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: Fredoka; src: url(fonts/Fredoka-600.ttf); }
+  html { background: linear-gradient(160deg, #ffe4f1, #e6e0ff); min-height: 100%; }
+  body {
+    font: 15px Fredoka, ui-rounded, "Trebuchet MS", sans-serif;
+    width: 250px; padding: 16px; margin: 0 auto; text-align: center; color: #5b3a5e;
+  }
+  .mood { font-size: 38px; }
+  h1 { font-size: 56px; margin: 0; line-height: 1; color: #ff5fa2; }
+  .label { opacity: .7; font-size: 13px; }
+  .title { margin: 8px 0; padding: 4px 12px; display: inline-block; border-radius: 99px; background: #fff; box-shadow: 0 2px 0 #f3b6d6; }
+  #stats { font-size: 13px; margin-bottom: 8px; }
+  small { opacity: .6; font-size: 11px; display: block; margin: 6px 0; }
+  hr { border: 0; border-top: 2px dashed #f3b6d6; margin: 12px 0; }
+  input, button { font: inherit; font-size: 13px; border-radius: 99px; border: 2px solid #ff8fc2; padding: 4px 10px; color: inherit; }
+  input { width: 130px; background: #fff; }
+  button { background: #ff5fa2; color: #fff; cursor: pointer; }
+  button.ghost { background: none; color: #5b3a5e; border-color: transparent; opacity: .65; font-size: 11px; }
+  #rows { max-height: 170px; overflow-y: auto; text-align: left; font-size: 13px; }
+  .row { display: flex; gap: 6px; padding: 2px 6px; border-radius: 8px; }
+  .row .nick { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .row.me { background: #fff; box-shadow: 0 2px 0 #f3b6d6; }
+  #err { color: #d6336c; font-size: 11px; min-height: 14px; }
+  #joinInfo { text-align: left; font-size: 12px; opacity: .85; }
+</style>
+<div class="mood" id="mood"></div>
+<h1 id="reels">0</h1>
+<div class="label">reels today</div>
+<div class="title" id="title"></div>
+<div id="stats"></div>
+<hr>
+
+<div id="join" hidden>
+  <div id="joinTitle"></div>
+  <p id="joinInfo">Doomboard counts your reels on your own device. If you join the global leaderboard, it shares <b>only your nickname and daily totals</b> (reels and minutes) — never what you watch. Leave any time and your data is deleted.</p>
+  <p><input id="nick" maxlength="20" placeholder="nickname" aria-label="nickname"> <button id="dice" class="ghost" title="random name">🎲</button></p>
+  <p><button id="joinBtn">Join leaderboard</button></p>
+  <button class="ghost" id="skip"></button>
+  <div id="err"></div>
+</div>
+
+<div id="invite" hidden>
+  <small>Your counts stay on this device.</small>
+  <button id="inviteBtn">🏆 Join the leaderboard</button>
+</div>
+
+<div id="board" hidden>
+  <div>🏆 Today's top scrollers</div>
+  <div id="rows">loading…</div>
+  <div>You're <b id="me"></b></div>
+  <button class="ghost" id="rename">rename</button>
+  <button class="ghost" id="leave">leave &amp; delete my data</button>
+</div>
+
+<script src="titles.js"></script>
+<script src="popup.js"></script>
